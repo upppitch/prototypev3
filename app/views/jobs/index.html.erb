@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <p> Welcome <%= current_user.firstName %> <%= current_user.lastName %> </p>
+  <p> Welcome <%= current_user.firstName %> <%= current_user.lastName %> <%= current_user.email %> </p>
   <p> You are signed as <%= current_user.status_type %><br>
 
   <% @users.each do |user| %>
@@ -8,5 +8,11 @@
       <% end %>
       <%= user.email %><br/>
     <% end %>
-  
+
+  <%= link_to "new post", new_job_path %>
+<% end %>
+
+<% @jobs.each do |job| %>
+  <h3><a href="#"><%= link_to job.title, job %></a></h3>
+  <br>
 <% end %>

@@ -4,6 +4,7 @@ class JobsController < ApplicationController
   
   def index
     @users = User.all
+    @jobs = Job.all.order("created_at DESC")
   end
 
   def show
@@ -15,6 +16,7 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(jobs_params)
+    @job.user_id = current_user.id
 
     if @job.save
       redirect_to @job, notice: "Job has been created!"
