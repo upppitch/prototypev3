@@ -28,6 +28,15 @@
     <%= f.email_field :email %>
   </div>
   <br>
+
+  <div class="field">
+    <p> Add Company Logo </p>
+    <%= f.label :avatar do %>
+      <%= f.file_field :avatar %>
+      <%= f.hidden_field :avatar_cache %>
+    <% end %>
+  </div>
+  
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
