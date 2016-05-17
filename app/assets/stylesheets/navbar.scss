@@ -1,0 +1,24 @@
+$main: #34314c;
+$secondary: #9592ad;
+$border: #d9dee9;
+
+$white: #FFFFFF;
+
+$highlight_1: #e36867; // Red
+$highlight_2: #fec952; // Yellow
+$highlight_3: #47b8e0; // Blue
+$highlight_4: #9f68d0; // Purple
+
+.nav{
+  float: right;
+  padding-top: 1.7em;
+  a{
+    color: $secondary;
+    margin-left: 1em;
+    text-decoration: none;
+  }
+  .current{
+    font-weight: 700;
+    color: $main;
+  }
+}
