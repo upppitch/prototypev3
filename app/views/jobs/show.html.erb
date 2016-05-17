@@ -17,5 +17,6 @@
 
     <p><%= @job.description %> </p>
 </ul>
-
+<% if (user_signed_in?) && (current_user == @job.user ) %> 
 <%= link_to "Edit", edit_job_path %> | <%= link_to "Delete", job_path(@job), method: :delete, data:{confirm: "Are you sure?"} %>
+<% end %>

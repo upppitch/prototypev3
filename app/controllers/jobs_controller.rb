@@ -1,6 +1,8 @@
 class JobsController < ApplicationController
 
   before_action :find_job, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, only:[:new, :create, :edit, :update, :destroy]
+  before_filter :check_user, only:[:edit, :update, :destroy]
   
   def index
     @users = User.all
@@ -44,6 +46,12 @@ class JobsController < ApplicationController
   private
     def jobs_params
       params.require(:job).permit(:title, :description, :city)
+    end
+
+    def check_user
+      if current_user != @job.user
+        redirect_to root_url, alert: "This job post isn't yours!!"
+      end
     end
 
     def find_job
