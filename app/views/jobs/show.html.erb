@@ -1,22 +1,24 @@
-<ul id="jobline">
-  
-    <li class="listing clearfix">
-      <div class="image_wrapper">
-        <%= image_tag @job.user.avatar.url(:thumb) %>
-      </div>
-      
-      <div class="info">
-        <span class="job_title"><%= @job.title %></span>
-        <span class="job_info"><%= @job.user.company %><span>&bull;</span> <%= @job.city %> <span>&bull;</span><%= @job.created_at.strftime("%A, %b, %d") %></span>
-      </div>
-      
-      <span class="job_type full_time">Full-Time</span>
-      <br>
-      
-    </li>
 
-    <p><%= @job.description %> </p>
-</ul>
-<% if (user_signed_in?) && (current_user == @job.user ) %> 
-<%= link_to "Edit", edit_job_path %> | <%= link_to "Delete", job_path(@job), method: :delete, data:{confirm: "Are you sure?"} %>
-<% end %>
+<div class="sub_nav">
+  <% if (user_signed_in?) && (current_user == @job.user ) %> 
+
+    <i class="fa fa-pencil" aria-hidden="true"><%= link_to "Edit", edit_job_path %></i> | <i class="fa fa-trash-o" aria-hidden="true">
+<%= link_to "Delete", job_path(@job), method: :delete, data:{confirm: "Are you sure?"} %></i>
+  <% end %>
+</div>
+
+<div class="job_post">
+  <h6 id="date"><%= @job.created_at.strftime("%A, %b, %d") %></h6>
+  <h1 id="title"><%= @job.title %></h1>
+  <hr>
+  <h5 id="job_info">&bull;<%= @job.user.company %> &bull;<%= @job.city %> &bull;<span class="job_type full_time">Full-Time</span> </h5>
+
+  <p id="job_contents"><%= @job.description %> </p>
+</div>
+<hr>
+<div id="share_box">
+  <a href="#"><i class="fa fa-twitter"></i></a>
+  <a href="#"><i class="fa fa-facebook"></i></a>
+  <a href="#"><i class="fa fa-google-plus"></i></a>
+</div>
+<hr>

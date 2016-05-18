@@ -14,6 +14,9 @@
  *= require_self
  */
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
 @import url(http://fonts.googleapis.com/css?family=Monserrat:400,700);
 @import "timeline";
 @import "navbar";
@@ -57,6 +60,11 @@ body{
   -webkit-background-size: 50% 100%;
   -moz-background-size: 50% 100%;
   background-size: 50% 100%;
+}
+
+.menu{
+  float: right;
+  margin-top: 2.5em;
 }
 
 .clearfix:before,.clearfix:after {
