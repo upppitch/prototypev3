@@ -5,7 +5,7 @@ class JobsController < ApplicationController
   before_filter :check_user, only:[:edit, :update, :destroy]
   
   def index
-    @users = User.all
+    @user = User.all
     @jobs = Job.all.order("created_at DESC")
   end
 

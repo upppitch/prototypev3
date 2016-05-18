@@ -1,18 +1,15 @@
-<% if user_signed_in? %>
-  <p> Welcome <%= current_user.firstName %> <%= current_user.lastName %> <%= current_user.email %> </p>
-  <p> You are signed as <%= current_user.status_type %><br>
-
-  <% @users.each do |user| %>
-      <% if user.avatar.url.present? %>
-        <%= image_tag user.avatar.url(:thumb) %>
-      <% end %>
-      <%= user.email %><br/>
-    <% end %>
-
-  <%= link_to "new post", new_job_path %>
-<% end %>
-
-<% @jobs.each do |job| %>
-  <h3><a href="#"><%= link_to job.title, job %></a></h3>
-  <br>
-<% end %>
+<ul id="timeline">
+  <% @jobs.each do |job| %>
+    <a href="#">
+    <li class="listing clearfix">
+      <div class="image_wrapper">
+        <%= image_tag job.user.avatar.url(:thumb)%>
+      </div>
+      <div class="info">
+        <span class="job_title"><h5><%= link_to job.title, job %></h5></span>
+        <span class="job_info"> <%= job.user.company %> <span>&bull;</span> <%= job.city %> <span>&bull;</span> <%= job.created_at.strftime("%A, %b, %d") %></span>
+      </div>
+      <span class="job_type full_time">Full-Time</span>
+    </li>
+  <% end %>
+</ul>
