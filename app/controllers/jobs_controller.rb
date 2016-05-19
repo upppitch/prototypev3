@@ -45,7 +45,7 @@ class JobsController < ApplicationController
 
   private
     def jobs_params
-      params.require(:job).permit(:title, :description, :city)
+      params.require(:job).permit(:title, :description, :city, :slug)
     end
 
     def check_user
@@ -55,7 +55,7 @@ class JobsController < ApplicationController
     end
 
     def find_job
-      @job = Job.find(params[:id])
+      @job = Job.friendly.find(params[:id])
     end
 
 end
