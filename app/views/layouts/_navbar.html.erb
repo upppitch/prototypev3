@@ -5,11 +5,14 @@
   </div>
 
   <nav class="nav">
-    <a href="/jobs" class="current">All Job</a>
-    <a href="#">Full-Time</a>
-    <a href="#">Part-Time</a>
-    <a href="#">Freelance</a>
-    <a href="#">Contract</a>
+    <% if current_page?(root_path)%>
+      <a href="/jobs" class="current">All Job</a>
+    <% else %>
+      <a href="/jobs">All Job</a>
+    <% Category.all.each do |category| %>
+      <%= link_to category.name, jobs_path(category: category.name)%>
+    <% end %>
+    <% end %>
   </nav>
 
 </header>
