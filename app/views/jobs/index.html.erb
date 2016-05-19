@@ -1,3 +1,9 @@
+
+  <% if (user_signed_in?) && (current_user.status_type == "Employer" ) %> 
+    <i class="fa fa-pencil" aria-hidden="true"><%= link_to "new", new_job_path %></i>
+  <% end %>
+
+
 <ul id="timeline">
   <% @jobs.each do |job| %>
     <a href="#">
