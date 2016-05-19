@@ -11,7 +11,19 @@
   <h6 id="date"><%= @job.created_at.strftime("%A, %b, %d") %></h6>
   <h1 id="title"><%= @job.title %></h1>
   <hr>
-  <h5 id="job_info">&bull;<%= @job.user.company %> &bull;<%= @job.city %> &bull;<span class="job_type full_time">Full-Time</span> </h5>
+  <h5 id="job_info">&bull;<%= @job.user.company %> &bull;<%= @job.city %> &bull;
+
+    <% if @job.category_id == "1" %>
+      <span class="job_type full_time">Full-Time</span> 
+    <% elsif @job.category_id == "2" %>
+      <span class="job_type part_time">Part-Time</span>
+    <% elsif @job.category_id == "3" %>
+      <span class="job_type freelance">Freelance</span>
+    <% else %>
+      <span class="job_type contract">Contract</span>
+    <% end %>
+
+  </h5>
 
   <p id="job_contents"><%= @job.description %> </p>
 </div>

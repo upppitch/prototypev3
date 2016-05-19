@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :jobs, dependent: :destroy
+  belongs_to :category
 
   # User Avatar Validation
   validates_integrity_of  :avatar

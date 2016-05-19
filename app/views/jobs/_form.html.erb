@@ -20,6 +20,10 @@
     </div>
 
     <div class="form-group">
+      <%= f.collection_select :category_id, Category.all, :id, :name, {promt: "Choose a category"} %>
+    </div>
+
+    <div class="form-group">
       <%= f.label :city %><br>
       <%= f.text_field :city, class: "form-control" %>
     </div>

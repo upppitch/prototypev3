@@ -9,7 +9,15 @@
         <span class="job_title"><h5><%= link_to job.title, job %></h5></span>
         <span class="job_info"> <%= job.user.company %> <span>&bull;</span> <%= job.city %> <span>&bull;</span> <%= job.created_at.strftime("%A, %b, %d") %></span>
       </div>
-      <span class="job_type full_time">Full-Time</span>
+      <% if job.category_id == "1" %>
+        <span class="job_type full_time">Full-Time</span> 
+      <% elsif job.category_id == "2" %>
+        <span class="job_type part_time">Part-Time</span>
+      <% elsif job.category_id == "3" %>
+        <span class="job_type freelance">Freelance</span>
+      <% else %>
+        <span class="job_type contract">Contract</span>
+      <% end %>
     </li>
   <% end %>
 </ul>
